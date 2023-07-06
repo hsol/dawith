@@ -37,7 +37,7 @@
                 <p>100주 맡기고<br/>100,000 원!</p>
                 <img src="{% static "images/pretotype/section3_img.png" %}"/>
             </div>
-            <button>받을 수 있는 금액 확인하기</button>
+            <button data-href="./contact">받을 수 있는 금액 확인하기</button>
         </section>
     </article>
 {% endblock %}
@@ -109,6 +109,10 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        $("button[data-href]").click((e) => {
+            location.href = e.currentTarget.dataset.href;
         });
     </script>
 {% endblock %}

@@ -11,10 +11,26 @@
 
 {% block body %}
     <header>
-        <a class="logo"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
+        <a href="/pretotype" class="logo"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
     </header>
     <article>
-        <section></section>
+        <section>
+            <h1>다윗: 작은이들의 외침</h1>
+            <p>
+                사실 이 서비스는 아직 세상에 존재하지 않아요 ...<br/>
+                그렇지만 여러분이 보여주시는 관심을 먹고 무럭무럭 자라는 중이에요 ❤️<br/><br/>
+                아래에 메일주소를 입력해주시면 다윗이 출시되면 알려드리고,<br/>
+                출시 후에 사용할 수 있는 포인트도 적립해드릴게요!!!
+            </p>
+            <form>
+                <input type="text" placeholder="name@example.com"/>
+                <button>입력하기</button>
+            </form>
+            <div class="background">
+                <img class="example1" src="{% static "images/pretotype/example1.png" %}" alt="예시 이미지 1"/>
+                <img class="example2" src="{% static "images/pretotype/example2.png" %}" alt="예시 이미지 2"/>
+            </div>
+        </section>
     </article>
 {% endblock %}
 
