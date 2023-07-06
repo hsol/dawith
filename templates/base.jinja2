@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{% block title %}다윗:작은 이들의 외침{% endblock %}</title>
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    {% block head_script %}{% endblock %}
+    {% block head_style %}{% endblock %}
+</head>
+
+<body>
+{% block body %}{% endblock %}
+{% block body_script %}{% endblock %}
+</body>
+</html>
