@@ -170,6 +170,22 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
+name = "jinja2-django-tags"
+version = "0.5"
+description = "jinja2 extensions that add django tags"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "jinja2-django-tags-0.5.tar.gz", hash = "sha256:43cb5150216ebc2a9c0e250f5277fb84b649cd2f125feaa6fc4937f1b3ae8f22"},
+    {file = "jinja2_django_tags-0.5-py2.py3-none-any.whl", hash = "sha256:383b85dd376b4376e102bcbbdcae45a589ede3dc2885422261111fc481f7b186"},
+]
+
+[package.dependencies]
+Django = ">=1.8"
+Jinja2 = ">=2.7"
+
+[[package]]
 name = "markupsafe"
 version = "2.1.3"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -450,4 +466,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "8b1aee538909814d3de34323e23654d347359e7ecb389295de3f777262bf9d2a"
+content-hash = "83caeee534e0fcca9d5082b3fed692b8317581436fe70cab092e9dc460fca23e"
