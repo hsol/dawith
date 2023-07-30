@@ -3,6 +3,7 @@
 {% block title %}주식 맡기고 용돈벌자!{% endblock %}
 
 {% block head_script %}
+    <script src="https://unpkg.com/pageable@latest/dist/pageable.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 {% endblock %}
 
@@ -10,30 +11,29 @@
     <link href="{% static "css/nanumgothic.css" %}" rel="stylesheet">
     <link href="{% static "css/pretotype/base.css" %}" rel="stylesheet">
     <link href="{% static "css/pretotype/landing.css" %}" rel="stylesheet">
+    <link href="https://unpkg.com/pageable@latest/dist/pageable.min.css" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
     <header>
-        <a class="logo" href="#section1"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
+        <a class="logo" href="#section-1"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
     </header>
-    <article>
-        <section id="section1">
+    <article id="full-page">
+        <section id="section-1" data-anchor="Section 1">
             <h1>내가 사기만 하면<br/>떨어지는 주식...</h1>
             <div class="background">
                 <p>어쩔 수 없이 존버는 해야겠고,<br/>묶여있을 피같은 돈에 내 속만 탄다!</p>
                 <img src="{% static "images/pretotype/section1_img.png" %}"/>
             </div>
-            <nav><a href="#section2"><img src="{% static "images/pretotype/arrow_down.gif" %}"/></a></nav>
         </section>
-        <section id="section2">
+        <section id="section-2" data-anchor="Section 2">
             <h1>가지고만 있어도<br/>돈을 주는 주식?</h1>
             <div class="background">
                 <p>묶인줄만 알았던 주식이<br/>나 대신 돈을 벌어다 줬네??</p>
                 <img src="{% static "images/pretotype/section2_img.png" %}"/>
             </div>
-            <nav><a href="#section3"><img src="{% static "images/pretotype/arrow_down.gif" %}"/></a></nav>
         </section>
-        <section id="section3">
+        <section id="section-3" data-anchor="Section 3">
             <h1>주식으로 돈도벌고<br/>내 권리도 챙기자!</h1>
             <div class="background">
                 <p>100주 맡기고<br/>100,000 원!</p>
@@ -41,57 +41,47 @@
             </div>
         </section>
     </article>
-    <footer><button data-href="./contact">받을 수 있는 금액 확인하기</button></footer>
+    <footer>
+        <button data-href="./contact">받을 수 있는 금액 확인하기</button>
+    </footer>
 {% endblock %}
 
 {% block body_script %}
     <script>
-        const $section1 = $("#section1");
-        const $section2 = $("#section2");
-        const $section3 = $("#section3");
-
-        const doType = ($e) => {
-            if ($e.isTyped) return;
-
-            const $h1 = $e.find("h1");
-            if (!$h1) return;
-
-            const scrollTop = $("article").scrollTop();
-            if ($h1.offset().top < 0) return;
-            if ($h1.offset().top > scrollTop + ($h1.position().top * 2)) return;
-
-            const text = $h1.html();
-            $h1.html('');
-            const $span = $("<span></span>");
-            $h1.append($span);
-
-            new Typed($span.get(0), {
-                strings: [text],
+        let pgb = undefined;
+        const doType = (el, contents) => {
+            return new Typed(el, {
+                strings: contents,
                 typeSpeed: 100,
-                showCursor: true,
+                showCursor: false,
                 cursorChar: '|',
             });
-            $e.isTyped = true;
         }
 
-        $(document).ready(() => {
-            doType($section1);
-            doType($section2);
-            doType($section3);
-        })
+        $(function () {
+            pgb = new Pageable("#full-page", {
+                onScroll: (obj) => {
+                    if (pgb === undefined) return;
 
-        $("article").scroll((e) => {
-            doType($section1);
-            doType($section2);
-            doType($section3);
-        });
+                    const el = pgb.pages[obj.index];
+                    const titleEl = el.querySelector("h1");
+                    let contents = [];
+                    if (el.typed) {
+                        contents = el.typed.options.strings
+                        el.typed.destroy();
+                    } else contents = [titleEl.innerHTML];
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                    el.typed = doType(titleEl, contents);
+                }
+            });
 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            $('a[href^="#"]').each((idx, el) => {
+                $(el).on('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
