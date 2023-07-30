@@ -11,30 +11,83 @@
 
 {% block body %}
     <header>
-        <a href="/pretotype" class="logo"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
+        <a href="/" class="logo"><img src="{% static "images/logo.png" %}" alt="다윗 로고"/></a>
     </header>
     <article>
         <section>
             <h1>다윗: 작은이들의 외침</h1>
-            <p>
-                사실 이 서비스는 아직 세상에 존재하지 않아요 ...<br/>
-                그렇지만 여러분이 보여주시는 관심을 먹고 무럭무럭 자라는 중이에요 ❤️<br/><br/>
-                아래에 메일주소를 입력해주시면 다윗이 출시되면 알려드리고,<br/>
-                출시 후에 사용할 수 있는 포인트도 적립해드릴게요!!!
-            </p>
-            <form>
-                <input type="text" placeholder="name@example.com"/>
-                <button>입력하기</button>
-            </form>
+            <div class="currency">
+                <h5 class="title">받을 수 있는 금액은 ... !!!</h5>
+                <h2 class="score">4,220 원 <small>(OOO 1주 1년 기준)</small></h2>
+                <p><small>위 금액은 예시 금액으로, 실제 시가총액과 보유량에 따라 금액은 달라질 수 있습니다.</small></p>
+            </div>
+            <div class="introduction">
+                <p>
+                    저는 '다윗' 이에요!, 세상에 나가기 전에 여러분이 주시는 관심을 먹고 무럭무럭 크는 중이랍니다 ❤️<br/>
+                    지금은 볼 수 없지만, 곧 여러분에게 찾아갈 거에요. 앞으로 계획하고 있는게 많답니다!<br/>
+                </p>
+                <p>다윗은 여러분들께 이런 것들을 제공해드리려 해요~</p>
+            </div>
+            <ul class="benefits">
+                <li>
+                    <h4>새로운 수익화 플랫폼</h4>
+                    <p>
+                        주주 여러분이 매수한 주식에는 '의결권' 이라는 권리가 붙어있어요. 이 의결권을 가지고 있는 것 만으로 의결권 수에 비례해서 포인트를 드릴 예정이에요!<br/><br/>
+                        포인트는 블록체인 기술을 활용한 이더리움 ERC-20 토큰으로 표현되며 이로써 새로운 수익화 시장을 만들어드릴 계획이에요
+                    </p>
+                </li>
+                <li>
+                    <h4>주주 커뮤니티</h4>
+                    <p>주식보유를 하여 주주임을 인증한 사람들을 종목 업종별로 모아 채팅, 게시판, 투표 등 함께 즐길 수 있는 콘텐츠가 가득한 커뮤니티를 제공해드려요!</p>
+                </li>
+                <li>
+                    <h4>더 많은 행동주의 캠페인</h4>
+                    <p>올바른 경영, 주주 환원정책 등을 담은 펀딩형 주주제안 등 여러분들의 주주권리와 행동주의를 지원해드릴거에요~! 당연히 캠페인을 진행하면 더 많은 포인트도 기대할 수
+                        있겠죠!</p>
+                </li>
+            </ul>
             <div class="background">
                 <img class="example1" src="{% static "images/pretotype/example1.png" %}" alt="예시 이미지 1"/>
                 <img class="example2" src="{% static "images/pretotype/example2.png" %}" alt="예시 이미지 2"/>
             </div>
         </section>
     </article>
+    <footer>
+        <form id="subscribe">
+            <fieldset>
+                <p>메일주소만 알려주시면 다윗에 대한 더 자세한 자료를 보내드려요.<br/>출시 후 <strong>사용할 수 있는 포인트</strong>도
+                    바로
+                    적립해드릴게요!!!</p>
+                <input type="email" name="email" placeholder="name@example.com"/>
+            </fieldset>
+            <button type="submit">포인트 받기!</button>
+        </form>
+    </footer>
 {% endblock %}
 
 {% block body_script %}
     <script>
+        $("form#subscribe").on("submit", function (e) {
+            e.preventDefault();
+
+            const $emailInput = $(this).find('input[name=email]');
+            $emailInput.attr("readonly", true);
+
+            $.ajax({
+                type: "GET",
+                url: "https://script.google.com/macros/s/AKfycbzZA9QM2mXEO-Sn5q42hrGhvvx0DwForh64DOXp06cozYl1hb0PKGQQ2c2rVcVhhgo/exec",
+                data: {
+                    "이메일": $emailInput.val()
+                },
+                success: () => {
+                    this.reset();
+                    alert('다윗에게 관심을 가져주셔서 감사합니다! 곧 입력해주신 이메일로 자료와 함께 인사드리겠습니다 !!');
+                },
+                complete: () => {
+                    $emailInput.removeAttr("readonly");
+                }
+            });
+            return false;
+        });
     </script>
 {% endblock %}
