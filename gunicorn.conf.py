@@ -1,3 +1,3 @@
-bind = "0.0.0.0:9010"
+bind = "0.0.0.0:80"
 workers = 1
 name = "dawith"
