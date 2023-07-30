@@ -16,7 +16,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <title>{% block title %}다윗:작은 이들의 외침{% endblock %}</title>
+    <title>{% block title %}다윗: 작은 이들의 외침{% endblock %}</title>
     <style>
         html, body {
             padding: 0;
@@ -28,6 +28,19 @@
             integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     {% block head_script %}{% endblock %}
     {% block head_style %}{% endblock %}
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <meta property="og:title" content="다윗: 작은 이들의 외침">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="{% static "img/logo_ait_sq.jpg" %}">
+
+    <link rel="manifest" href="{% static "site.webmanifest" %}">
+    <link rel="apple-touch-icon" href="{% static "images/apple-touch-icon.png" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
 </head>
 <body>
 {% block body %}{% endblock %}

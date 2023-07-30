@@ -1,5 +1,7 @@
 {% extends "base.jinja2" %}
 
+{% block title %}주식 맡기고 용돈벌자!{% endblock %}
+
 {% block head_script %}
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 {% endblock %}
@@ -72,33 +74,16 @@
             $e.isTyped = true;
         }
 
-        const appearButton = ($e) => {
-            const $h1 = $e.find("button");
-            if (!$h1) return;
-
-            const scrollTop = $("article").scrollTop();
-            if ($h1.offset().top < 0) return;
-            if ($h1.offset().top > scrollTop) return;
-
-            const $button = $e.find("button");
-            if (!$button) return;
-            if ($button.hasClass("appear")) return;
-
-            $button.addClass("appear");
-        };
-
         $(document).ready(() => {
             doType($section1);
             doType($section2);
             doType($section3);
-            appearButton($section3);
         })
 
         $("article").scroll((e) => {
             doType($section1);
             doType($section2);
             doType($section3);
-            appearButton($section3);
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
