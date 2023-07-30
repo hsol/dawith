@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WW6LP340BX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-WW6LP340BX');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>{% block title %}다윗:작은 이들의 외침{% endblock %}</title>
@@ -16,7 +29,6 @@
     {% block head_script %}{% endblock %}
     {% block head_style %}{% endblock %}
 </head>
-
 <body>
 {% block body %}{% endblock %}
 {% block body_script %}{% endblock %}
