@@ -1,0 +1,290 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+article {
+  height: 100vh;
+  overflow-y: auto;
+
+  section {
+    height: 100%;
+    position: relative;
+
+    &#section1 {
+      background-color: #085FB1;
+    }
+
+    &#section2 {
+      background-color: #B10845;
+    }
+
+    &#section3 {
+      background-color: #00B050;
+    }
+
+    > h1 {
+      color: white;
+      margin: 0;
+      position: absolute;
+      line-height: 1.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .background {
+      position: absolute;
+      text-align: center;
+
+      p {
+        position: absolute;
+        color: white;
+        font-size: 24px;
+        line-height: 1.3em;
+        opacity: 0.8;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    nav {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 0;
+      padding: 1em;
+
+      img {
+        width: 6em;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: scale(1, 1);
+  }
+
+  to {
+    transform: scale(1.01, 1.05);
+  }
+}
+
+footer {
+  display: flex;
+  flex-flow: column nowrap;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1em;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  button {
+    animation-name: bounce;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  article section {
+    > h1 {
+      font-size: 64px;
+    }
+
+    &#section1 {
+      > h1 {
+        top: 250px;
+        left: 100px;
+      }
+
+      .background {
+        bottom: 116px;
+        right: 104px;
+
+        p {
+          top: 430px;
+          left: -302px;
+        }
+      }
+    }
+
+    &#section2 {
+      > h1 {
+        top: 250px;
+        right: 100px;
+      }
+
+      .background {
+        bottom: 132px;
+        left: 104px;
+
+        p {
+          top: 302px;
+          right: -200px;
+        }
+      }
+    }
+
+
+    &#section3 {
+      > h1 {
+        top: 250px;
+        left: 100px;
+      }
+
+      .background {
+        bottom: 132px;
+        right: 51px;
+
+        p {
+          position: absolute;
+          top: 0;
+          right: 0px;
+        }
+
+        img {
+          width: 45vw;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  article section {
+    > h1 {
+      font-size: 48px;
+    }
+
+    .background {
+      p {
+        font-size: 16px;
+      }
+
+      img {
+        width: 80%;
+      }
+    }
+
+    &#section1 {
+      > h1 {
+        top: 250px;
+        left: 100px;
+      }
+
+      .background {
+        bottom: 116px;
+        right: 0;
+
+        p {
+          position: absolute;
+          bottom: 100px;
+          left: -13em;
+        }
+      }
+    }
+
+    &#section2 {
+      > h1 {
+        top: 250px;
+        right: 100px;
+      }
+
+      .background {
+        bottom: 132px;
+        left: 104px;
+
+        p {
+          position: absolute;
+          top: 302px;
+          right: -60px;
+        }
+      }
+    }
+
+    &#section3 {
+      > h1 {
+        top: 250px;
+        left: 100px;
+      }
+
+      .background {
+        position: absolute;
+        bottom: 116px;
+        right: 3em;
+
+        p {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        img {
+          width: 60%;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  article section {
+    > h1 {
+      top: 160px;
+      left: 14%;
+      font-size: 36px;
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+
+      p {
+        font-size: 16px;
+        top: -10%;
+        right: 30px;
+        padding: 0.3em;
+        border-radius: 10px;
+      }
+
+      img {
+        max-width: 60%;
+        bottom: 0;
+      }
+    }
+
+    &#section3 {
+      .background {
+        bottom: 80px;
+
+        img {
+          max-width: 90%;
+        }
+      }
+    }
+
+    nav {
+      position: absolute;
+      width: 100%;
+      text-align: right;
+      bottom: 0;
+      padding: 1em;
+
+      img {
+        width: 6em;
+      }
+    }
+  }
+}
