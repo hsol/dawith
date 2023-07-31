@@ -15,6 +15,7 @@ article {
   section {
     height: 100%;
     position: relative;
+    overflow-x: hidden;
 
     &#section-1 {
       background-color: #085FB1;
