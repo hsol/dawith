@@ -6,11 +6,17 @@
     opacity: 1;
   }
 }
+.pg-wrapper {
+  width: 100% !important;
+}
+
 article {
+  width: 100% !important;
   height: 100vh;
   overflow-y: auto;
 }
 article section {
+  width: 100% !important;
   height: 100%;
   position: relative;
   overflow-x: hidden;
