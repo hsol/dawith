@@ -90,19 +90,29 @@
                 $emailInput.attr("readonly", true);
 
                 $.ajax({
-                    type: "GET",
-                    url: "https://script.google.com/macros/s/AKfycbzZA9QM2mXEO-Sn5q42hrGhvvx0DwForh64DOXp06cozYl1hb0PKGQQ2c2rVcVhhgo/exec",
+                    type: "POST",
+                    url: "/api/subscription",
                     data: {
-                        "이메일": $emailInput.val()
-                    },
-                    success: () => {
-                        this.reset();
-                        alert('다윗에게 관심을 가져주셔서 감사합니다! 곧 입력해주신 이메일로 자료와 함께 인사드리겠습니다 !!');
-                    },
-                    complete: () => {
-                        $emailInput.removeAttr("readonly");
+                        "email": $emailInput.val()
                     }
-                });
+                }).done(() => {
+                    this.reset();
+                    alert('다윗에게 관심을 가져주셔서 감사합니다! 곧 입력해주신 이메일로 자료와 함께 인사드리겠습니다 !!');
+                }).fail((e) => {
+                    switch (parseInt(e.status / 100)) {
+                        case 4:
+                            alert("입력한 내용을 확인 후 다시 시도해주세요.");
+                            break;
+                        case 5:
+                            alert("서버가 정상적으로 응답하지 않습니다.");
+                            break;
+                        default:
+                            alert("알 수 없는 오류가 발생했습니다.")
+                            break;
+                    }
+                }).always(() => {
+                    $emailInput.removeAttr("readonly");
+                })
                 return false;
             });
         });

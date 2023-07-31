@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "drf_spectacular",
     "pretotype",
 ]
 
@@ -164,3 +166,13 @@ SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 CACHE_MIDDLEWARE_ALIAS = "default"
 CACHE_MIDDLEWARE_SECONDS = 60
 CACHE_MIDDLEWARE_KEY_PREFIX = ""
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "다윗 API",
+    "DESCRIPTION": "다윗 프로젝트 API docs",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
