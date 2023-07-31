@@ -71,8 +71,12 @@ article section .currency .title {
 article section .currency .score {
   word-break: keep-all;
 }
+article section .currency .score > small {
+  font-size: 0.3em;
+}
 article section .currency p {
-  margin: 0;
+  margin: 1em 0 0 0;
+  line-height: 1em;
 }
 article section .introduction {
   animation-delay: 1.8s;

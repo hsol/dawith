@@ -42,7 +42,7 @@ button:hover {
 }
 
 small {
-  font-size: 0.8em !important;
+  font-size: 0.8em;
 }
 
 @media all and (min-width: 767px) {

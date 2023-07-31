@@ -80,10 +80,15 @@ article {
 
       .score {
         word-break: keep-all;
+
+        & > small {
+          font-size: 0.3em;
+        }
       }
 
       p {
-        margin: 0;
+        margin: 1em 0 0 0;
+        line-height: 1em;
       }
 
       margin-bottom: 3em;
