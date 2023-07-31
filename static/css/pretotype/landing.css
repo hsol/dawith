@@ -196,8 +196,11 @@ footer button {
     font-size: 16px;
     top: -10%;
     right: 30px;
-    padding: 0.3em;
-    border-radius: 10px;
+    padding: 1em 2em;
+    color: black;
+    text-shadow: none;
+    background-color: white;
+    border-radius: 50%;
   }
   article section .background img {
     max-width: 60%;
