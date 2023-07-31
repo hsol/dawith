@@ -13,11 +13,10 @@ body {
 
 @keyframes lazyAppear {
   from {
-    top: 5%;
+    bottom: -5%;
     opacity: 0;
   }
   to {
-    top: 0;
     opacity: 1;
   }
 }
