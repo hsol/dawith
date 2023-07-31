@@ -13,9 +13,11 @@ body {
 
 @keyframes lazyAppear {
   from {
+    top: 5%;
     opacity: 0;
   }
   to {
+    top: 0;
     opacity: 1;
   }
 }
@@ -89,15 +91,15 @@ article {
     }
 
     .introduction {
-      animation-delay: 0.8s;
+      animation-delay: 1.8s;
     }
 
     .benefits {
-      animation-delay: 1.1s;
+      animation-delay: 1.9s;
     }
 
     .background {
-      animation-delay: 1.2s;
+      animation-delay: 2s;
     }
 
     .introduction, .benefits {
@@ -185,7 +187,7 @@ article {
   }
 }
 
-@keyframes slideup {
+@keyframes slideUp {
   from {
     bottom: -100%;
   }
@@ -195,8 +197,8 @@ article {
 }
 
 footer {
-  animation-name: slideup;
-  animation-delay: 0.5s;
+  animation-name: slideUp;
+  animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
@@ -316,6 +318,5 @@ footer {
   }
   footer form {
     font-size: 14px;
-
   }
 }

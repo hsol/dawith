@@ -1,5 +1,11 @@
 {% extends "base.jinja2" %}
 
+{% block head_script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.umd.min.js"
+            integrity="sha512-6ui6AZ7LkvcVVrr0VxsLVIFfnsI6mPTYS6BKLnigikOSWlkfr74fH+U4lY2trBFXTUGI0IpNxgxnoVNmFHczog=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
 {% block head_style %}
     <link href="{% static "css/nanumgothic.css" %}" rel="stylesheet">
     <link href="{% static "css/pretotype/base.css" %}" rel="stylesheet">
@@ -15,8 +21,8 @@
             <h1>다윗: 작은이들의 외침</h1>
             <div class="currency">
                 <h5 class="title">받을 수 있는 금액은 ... !!!</h5>
-                <h2 class="score">4,220 원 <br class="m" /><small>(OOO 1주 1년 기준)</small></h2>
-                <p><small>위 금액은 예시 금액으로, 실제 시가총액과 보유량에 따라 금액은 달라질 수 있습니다.</small></p>
+                <h2 class="score"><span>4,220</span> 원 <br class="m"/><small>(OOO 1주 1년 기준)</small></h2>
+                <p><small><small>위 금액은 예시 금액으로, 실제 시가총액과 보유량에 따라 금액은 달라질 수 있습니다.</small></small></p>
             </div>
             <div class="introduction">
                 <p>
@@ -65,27 +71,40 @@
 
 {% block body_script %}
     <script>
-        $("form#subscribe").on("submit", function (e) {
-            e.preventDefault();
+        $(function () {
+            const countTarget = document.querySelector('.score > span');
+            const startCount = (el) => {
+                const countNum = Math.random() * (10000 - 5000) + 5000;
+                const counter = new countUp.CountUp(el, countNum, {
+                    onCompleteCallback: () => setTimeout(() => startCount(el), 1000)
+                });
+                counter.start();
+                return counter;
+            }
+            startCount(countTarget);
 
-            const $emailInput = $(this).find('input[name=email]');
-            $emailInput.attr("readonly", true);
+            $("form#subscribe").on("submit", function (e) {
+                e.preventDefault();
 
-            $.ajax({
-                type: "GET",
-                url: "https://script.google.com/macros/s/AKfycbzZA9QM2mXEO-Sn5q42hrGhvvx0DwForh64DOXp06cozYl1hb0PKGQQ2c2rVcVhhgo/exec",
-                data: {
-                    "이메일": $emailInput.val()
-                },
-                success: () => {
-                    this.reset();
-                    alert('다윗에게 관심을 가져주셔서 감사합니다! 곧 입력해주신 이메일로 자료와 함께 인사드리겠습니다 !!');
-                },
-                complete: () => {
-                    $emailInput.removeAttr("readonly");
-                }
+                const $emailInput = $(this).find('input[name=email]');
+                $emailInput.attr("readonly", true);
+
+                $.ajax({
+                    type: "GET",
+                    url: "https://script.google.com/macros/s/AKfycbzZA9QM2mXEO-Sn5q42hrGhvvx0DwForh64DOXp06cozYl1hb0PKGQQ2c2rVcVhhgo/exec",
+                    data: {
+                        "이메일": $emailInput.val()
+                    },
+                    success: () => {
+                        this.reset();
+                        alert('다윗에게 관심을 가져주셔서 감사합니다! 곧 입력해주신 이메일로 자료와 함께 인사드리겠습니다 !!');
+                    },
+                    complete: () => {
+                        $emailInput.removeAttr("readonly");
+                    }
+                });
+                return false;
             });
-            return false;
         });
     </script>
 {% endblock %}

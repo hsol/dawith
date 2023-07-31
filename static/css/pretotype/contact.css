@@ -11,9 +11,11 @@ body:before {
 
 @keyframes lazyAppear {
   from {
+    top: 5%;
     opacity: 0;
   }
   to {
+    top: 0;
     opacity: 1;
   }
 }
@@ -74,13 +76,13 @@ article section .currency p {
   margin: 0;
 }
 article section .introduction {
-  animation-delay: 0.8s;
+  animation-delay: 1.8s;
 }
 article section .benefits {
-  animation-delay: 1.1s;
+  animation-delay: 1.9s;
 }
 article section .background {
-  animation-delay: 1.2s;
+  animation-delay: 2s;
 }
 article section .introduction, article section .benefits {
   position: relative;
@@ -152,7 +154,7 @@ article section .background img.example2 {
   top: -6em;
 }
 
-@keyframes slideup {
+@keyframes slideUp {
   from {
     bottom: -100%;
   }
@@ -161,8 +163,8 @@ article section .background img.example2 {
   }
 }
 footer {
-  animation-name: slideup;
-  animation-delay: 0.5s;
+  animation-name: slideUp;
+  animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
