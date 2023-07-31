@@ -45,4 +45,10 @@ small {
   font-size: 0.8em !important;
 }
 
+@media all and (min-width: 767px) {
+  .m {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=base.css.map */
