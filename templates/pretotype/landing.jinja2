@@ -42,7 +42,7 @@
         </section>
     </article>
     <footer>
-        <button data-href="./contact">받을 수 있는 금액 확인하기</button>
+        <button data-href="./contact?r={{ request.GET.get("r", "direct") }}">받을 수 있는 금액 확인하기</button>
     </footer>
 {% endblock %}
 

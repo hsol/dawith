@@ -12,7 +12,8 @@ class SubscriptionModelSerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data):
         if subscription := Subscription.objects.filter(
-            email=validated_data["email"]
+            email=validated_data["email"],
+            referer=validated_data["referer"],
         ).first():
             return subscription
 

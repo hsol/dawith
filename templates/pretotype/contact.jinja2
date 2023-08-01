@@ -93,7 +93,8 @@
                     type: "POST",
                     url: "/api/subscription",
                     data: {
-                        "email": $emailInput.val()
+                        "email": $emailInput.val(),
+                        "referer": "{{ request.GET.get("r", "direct") }}"
                     }
                 }).done(() => {
                     this.reset();
